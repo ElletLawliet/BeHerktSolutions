@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BeHerktSolutions.Util.Query
+{
+    class QTipoPlan
+    {
+        /* <<<<< TIPOPLAN QUERYS >>>>> */
+
+        public static string FIND_ALL = "SELECT * FROM TIPOPLAN P INNER JOIN TIPODESCUENTO D " +
+            "ON (P.TDCCODIGO = D.TDCCODIGO) INNER JOIN TIPOID T ON (T.TIDCODIGO = D.TIDCODIGO)";
+
+        public static string FIND_BY_DESCRIPCION = "SELECT * FROM TIPOPLAN P INNER JOIN TIPODESCUENTO D " +
+            "ON (P.TDCCODIGO = D.TDCCODIGO) INNER JOIN TIPOID T ON (T.TIDCODIGO = D.TIDCODIGO) " +
+            "WHERE TPPDESCRIPCION LIKE '@DESCRIPCION'";
+
+        public static string FIND_BY_CODIGO = "SELECT * FROM TIPOPLAN P INNER JOIN TIPODESCUENTO D " +
+            "ON (P.TDCCODIGO = D.TDCCODIGO) INNER JOIN TIPOID T ON (T.TIDCODIGO = D.TIDCODIGO) " +
+            "WHERE TPPCODIGO LIKE '@CODIGO'";
+
+        public static string SAVE = "INSERT INTO TIPOPLAN (TPPCODIGO, TDCCODIGO, TPPDESCRIPCION, TPPPORCEN, " +
+            "TPPESTADO) " +
+            "VALUES (@CODIGO,@TDCCODIGO,@DESCRIPCION,@PORCENTAJE,@ESTADO)";
+
+        public static string UPDATE = "UPDATE TIPOPLAN SET TPPCODIGO = @CODIGO, TDCCODIGO = @TDCCODIGO, " +
+            "TPPDESCRIPCION = @DESCRIPCION, TPPPORCEN = @PORCENTAJE, TPPESTADO = @ESTADO WHERE TPPSECUENCIA = @SECUENCIA";
+
+        public static string DELETE = "DELETE FROM TIPOPLAN WHERE TPPSECUENCIA = @SECUENCIA";
+    }
+}
